@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "TemplateEditor": {
+      "path": "TemplateEditor.abpmdl.json"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "TemplateEditor.Domain.Shared": {
+      "path": "src/TemplateEditor.Domain.Shared/TemplateEditor.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.Domain": {
+      "path": "src/TemplateEditor.Domain/TemplateEditor.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.Application.Contracts": {
+      "path": "src/TemplateEditor.Application.Contracts/TemplateEditor.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.Application": {
+      "path": "src/TemplateEditor.Application/TemplateEditor.Application.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.EntityFrameworkCore": {
+      "path": "src/TemplateEditor.EntityFrameworkCore/TemplateEditor.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.MongoDB": {
+      "path": "src/TemplateEditor.MongoDB/TemplateEditor.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.HttpApi": {
+      "path": "src/TemplateEditor.HttpApi/TemplateEditor.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.HttpApi.Client": {
+      "path": "src/TemplateEditor.HttpApi.Client/TemplateEditor.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "TemplateEditor.TestBase": {
+      "path": "test/TemplateEditor.TestBase/TemplateEditor.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "TemplateEditor.EntityFrameworkCore.Tests": {
+      "path": "test/TemplateEditor.EntityFrameworkCore.Tests/TemplateEditor.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "TemplateEditor.MongoDB.Tests": {
+      "path": "test/TemplateEditor.MongoDB.Tests/TemplateEditor.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "TemplateEditor.Domain.Tests": {
+      "path": "test/TemplateEditor.Domain.Tests/TemplateEditor.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "TemplateEditor.Application.Tests": {
+      "path": "test/TemplateEditor.Application.Tests/TemplateEditor.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "TemplateEditor.HttpApi.Host": {
+      "path": "host/TemplateEditor.HttpApi.Host/TemplateEditor.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "TemplateEditor.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/TemplateEditor.HttpApi.Client.ConsoleTestApp/TemplateEditor.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "TemplateEditor.AuthServer": {
+      "path": "host/TemplateEditor.AuthServer/TemplateEditor.AuthServer.abppkg.json",
+      "folder": "host"
+    },
+    "TemplateEditor.Host.Shared": {
+      "path": "host/TemplateEditor.Host.Shared/TemplateEditor.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}
