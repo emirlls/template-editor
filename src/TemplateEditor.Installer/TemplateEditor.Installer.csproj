@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+        <RootNamespace>TemplateEditor</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="7.3.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="..\..\TemplateEditor.abpmdl.json" />
+      <Content Include="..\..\TemplateEditor.abpmdl.json">
+        <Pack>true</Pack>
+        <PackagePath>content\</PackagePath>
+      </Content>
+    </ItemGroup>
+
+</Project>
