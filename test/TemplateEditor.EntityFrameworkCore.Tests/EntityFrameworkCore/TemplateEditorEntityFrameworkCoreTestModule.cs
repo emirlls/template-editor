@@ -16,30 +16,30 @@ namespace TemplateEditor.EntityFrameworkCore;
     )]
 public class TemplateEditorEntityFrameworkCoreTestModule : AbpModule
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
-    {
-        context.Services.AddAlwaysDisableUnitOfWorkTransaction();
+    // public override void ConfigureServices(ServiceConfigurationContext context)
+    // {
+    //     context.Services.AddAlwaysDisableUnitOfWorkTransaction();
+    //
+    //     var sqliteConnection = CreateDatabaseAndGetConnection();
+    //
+    //     Configure<AbpDbContextOptions>(options =>
+    //     {
+    //         options.Configure(abpDbContextConfigurationContext =>
+    //         {
+    //             abpDbContextConfigurationContext.DbContextOptions.UseSqlite(sqliteConnection);
+    //         });
+    //     });
+    // }
 
-        var sqliteConnection = CreateDatabaseAndGetConnection();
-
-        Configure<AbpDbContextOptions>(options =>
-        {
-            options.Configure(abpDbContextConfigurationContext =>
-            {
-                abpDbContextConfigurationContext.DbContextOptions.UseSqlite(sqliteConnection);
-            });
-        });
-    }
-
-    private static SqliteConnection CreateDatabaseAndGetConnection()
-    {
-        var connection = new SqliteConnection("Data Source=:memory:");
-        connection.Open();
-
-        new TemplateEditorDbContext(
-            new DbContextOptionsBuilder<TemplateEditorDbContext>().UseSqlite(connection).Options
-        ).GetService<IRelationalDatabaseCreator>().CreateTables();
-
-        return connection;
-    }
+    // private static SqliteConnection CreateDatabaseAndGetConnection()
+    // {
+    //     var connection = new SqliteConnection("Data Source=:memory:");
+    //     connection.Open();
+    //
+    //     new TemplateEditorDbContext(
+    //         new DbContextOptionsBuilder<TemplateEditorDbContext>().UseSqlite(connection).Options
+    //     ).GetService<IRelationalDatabaseCreator>().CreateTables();
+    //
+    //     return connection;
+    // }
 }

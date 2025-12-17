@@ -4,6 +4,7 @@ using TemplateEditor.Extensions;
 using Volo.Abp.Modularity;
 using Volo.Abp.Localization;
 using TemplateEditor.Localization;
+using Volo.Abp;
 using Volo.Abp.Domain;
 using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Validation;
@@ -38,7 +39,11 @@ public class TemplateEditorDomainSharedModule : AbpModule
             options.MapCodeNamespace("TemplateEditor", typeof(TemplateEditorResource));
         });
 
+    }
+
+    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    {
         LocalizationProvider.SetLocalizer(
-            context.Services.GetRequiredService<IStringLocalizer<TemplateEditorResource>>());
+            context.ServiceProvider.GetRequiredService<IStringLocalizer<TemplateEditorResource>>());
     }
 }

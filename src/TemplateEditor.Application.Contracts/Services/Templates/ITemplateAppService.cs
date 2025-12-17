@@ -25,4 +25,9 @@ public interface ITemplateAppService : IApplicationService
         TemplateFilters templateFilters,
         CancellationToken cancellationToken = default
     );
+
+    Task<bool> DeleteAsync(
+        Guid id,
+        CancellationToken cancellationToken = default
+    );
 }
