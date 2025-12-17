@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using IdentityModel.Client;
 using Microsoft.Extensions.Configuration;
-using TemplateEditor.Samples;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.IdentityModel;
 
@@ -11,23 +10,20 @@ namespace TemplateEditor;
 
 public class ClientDemoService : ITransientDependency
 {
-    private readonly ISampleAppService _sampleAppService;
     private readonly IIdentityModelAuthenticationService _authenticationService;
     private readonly IConfiguration _configuration;
 
     public ClientDemoService(
-        ISampleAppService sampleAppService,
         IIdentityModelAuthenticationService authenticationService,
         IConfiguration configuration)
     {
-        _sampleAppService = sampleAppService;
         _authenticationService = authenticationService;
         _configuration = configuration;
     }
 
     public async Task RunAsync()
     {
-        await TestWithDynamicProxiesAsync();
+        //await TestWithDynamicProxiesAsync();
         await TestWithHttpClientAndIdentityModelAuthenticationServiceAsync();
         await TestAllManuallyAsync();
     }
@@ -36,17 +32,17 @@ public class ClientDemoService : ITransientDependency
      * feature. It is just simple as calling a local service method.
      * Authorization and HTTP request details are handled by the ABP framework.
      */
-    private async Task TestWithDynamicProxiesAsync()
-    {
-        Console.WriteLine();
-        Console.WriteLine($"***** {nameof(TestWithDynamicProxiesAsync)} *****");
-
-        var result = await _sampleAppService.GetAsync();
-        Console.WriteLine("Result: " + result.Value);
-
-        result = await _sampleAppService.GetAuthorizedAsync();
-        Console.WriteLine("Result (authorized): " + result.Value);
-    }
+    // private async Task TestWithDynamicProxiesAsync()
+    // {
+    //     Console.WriteLine();
+    //     Console.WriteLine($"***** {nameof(TestWithDynamicProxiesAsync)} *****");
+    //
+    //     var result = await _sampleAppService.GetAsync();
+    //     Console.WriteLine("Result: " + result.Value);
+    //
+    //     result = await _sampleAppService.GetAuthorizedAsync();
+    //     Console.WriteLine("Result (authorized): " + result.Value);
+    // }
 
     /* Shows how to use HttpClient to perform a request to the HTTP API.
      * It uses ABP's IIdentityModelAuthenticationService to simplify obtaining access tokens.

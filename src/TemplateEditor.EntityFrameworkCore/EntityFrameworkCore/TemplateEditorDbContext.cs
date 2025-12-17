@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TemplateEditor.Entities.Lookups;
+using TemplateEditor.Entities.Templates;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -17,10 +19,13 @@ public class TemplateEditorDbContext : AbpDbContext<TemplateEditorDbContext>, IT
 
     }
 
+    public DbSet<Template> Templates { get; set; }
+    public DbSet<TemplateType> TemplateTypes { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
         builder.ConfigureTemplateEditor();
+        builder.ToSnakeCase();
     }
 }

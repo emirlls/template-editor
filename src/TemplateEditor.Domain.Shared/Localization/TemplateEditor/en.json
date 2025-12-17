@@ -2,6 +2,13 @@
   "culture": "en",
   "texts": {
     "MyAccount":  "My account",
-    "SamplePageMessage": "A sample page for the TemplateEditor module"
+    "SamplePageMessage": "A sample page for the TemplateEditor module",
+
+
+    "TemplateEditor:ExceptionCodes:UnexpectedException:001": "Unexpected Error.",
+    "TemplateEditor:ExceptionCodes:Success:001": "Success.",
+
+    "TemplateEditor:ExceptionCodes:Template:001": "Template not found.",
+    "TemplateEditor:ExceptionCodes:Template:002": "Template already exists."
   }
 }
