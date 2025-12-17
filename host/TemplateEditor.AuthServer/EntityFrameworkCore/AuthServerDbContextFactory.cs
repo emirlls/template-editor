@@ -12,7 +12,7 @@ public class AuthServerDbContextFactory : IDesignTimeDbContextFactory<AuthServer
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<AuthServerDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("Default"));
+            .UseNpgsql(configuration.GetConnectionString("Default"));
 
         return new AuthServerDbContext(builder.Options);
     }

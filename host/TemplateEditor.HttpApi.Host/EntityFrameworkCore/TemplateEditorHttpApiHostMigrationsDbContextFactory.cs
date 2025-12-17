@@ -12,7 +12,7 @@ public class TemplateEditorHttpApiHostMigrationsDbContextFactory : IDesignTimeDb
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<TemplateEditorHttpApiHostMigrationsDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("TemplateEditor"));
+            .UseNpgsql(configuration.GetConnectionString("TemplateEditor"));
 
         return new TemplateEditorHttpApiHostMigrationsDbContext(builder.Options);
     }
