@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -41,12 +42,18 @@ public class EfTemplateRepository : EfCustomRepository<Template>, ITemplateRepos
     )
     {
         var dbSet = await GetDbSetAsync();
+        var skipCount = templateFilters.Page == 1
+            ? 0
+            : (templateFilters.Page - 1) * templateFilters.PageSize;
         var filteredQuery = dbSet.ApplyFilters(templateFilters);
         var count = await filteredQuery.CountAsync(cancellationToken: cancellationToken);
         var cacheKey = CacheExtension.GenerateCacheKeyToCount(CultureInfo.CurrentCulture, CurrentTenant.Id,
             CurrentUser.Id, templateFilters.GetType().Name);
         await DistributedCache.SetStringAsync(cacheKey, count.ToString(), token: cancellationToken);
-        return await filteredQuery.ToListAsync(cancellationToken: cancellationToken);
+        return await filteredQuery
+            .Skip(skipCount)
+            .Take(templateFilters.PageSize)
+            .ToListAsync(cancellationToken: cancellationToken);
     }
 
     public async Task<long> GetFilteredCountAsync(TemplateFilters templateFilters,

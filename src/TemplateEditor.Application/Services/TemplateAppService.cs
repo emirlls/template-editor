@@ -53,12 +53,21 @@ public class TemplateAppService : TemplateEditorAppService, ITemplateAppService
         CancellationToken cancellationToken = default)
     {
         var entities = await TemplateRepository.GetFilteredListAsync(templateFilters, cancellationToken);
+        var count = await TemplateRepository.GetFilteredCountAsync(templateFilters, cancellationToken);
         var mapped = ObjectMapper.Map<List<Template>, List<TemplateDto>>(entities);
         var response = new PagedResultDto<TemplateDto>
         {
             Items = mapped,
-            TotalCount = 0
+            TotalCount = count
         };
         return response;
+    }
+
+    public async Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var entity = await TemplateManager.TryGetByAsync(x => x.Id.Equals(id), throwIfNull: true,
+            cancellationToken: cancellationToken);
+        await TemplateRepository.DeleteAsync(entity, cancellationToken: cancellationToken);
+        return true;
     }
 }

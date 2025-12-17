@@ -24,7 +24,13 @@ public class TemplateController : TemplateEditorController
 
     private ITemplateAppService TemplateAppService =>
         _abpLazyServiceProvider.LazyGetRequiredService<ITemplateAppService>();
-
+    
+    /// <summary>
+    /// Use to paged and filtered list of templates. 
+    /// </summary>
+    /// <param name="templateFilters"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<PagedResultDto<TemplateDto>> GetPagedListAsync(
         TemplateFilters templateFilters,
@@ -35,7 +41,7 @@ public class TemplateController : TemplateEditorController
     }
 
     /// <summary>
-    /// Use to create template
+    /// Use to create template.
     /// </summary>
     /// <param name="templateCreateDto"></param>
     /// <param name="cancellationToken"></param>
@@ -50,7 +56,7 @@ public class TemplateController : TemplateEditorController
     }
 
     /// <summary>
-    /// Use to update template
+    /// Use to update template.
     /// </summary>
     /// <param name="id"></param>
     /// <param name="templateUpdateDto"></param>
@@ -64,5 +70,17 @@ public class TemplateController : TemplateEditorController
     )
     {
         return await TemplateAppService.UpdateAsync(id, templateUpdateDto, cancellationToken);
+    }
+
+    /// <summary>
+    /// Use to delete template.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    [HttpDelete("{id}")]
+    public async Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return await TemplateAppService.DeleteAsync(id, cancellationToken);
     }
 }
