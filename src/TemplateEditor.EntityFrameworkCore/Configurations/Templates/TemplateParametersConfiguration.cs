@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TemplateEditor.Constants;
 using TemplateEditor.Entities.Templates;
 using TemplateEditor.Extensions;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace TemplateEditor.Configurations.Templates;
 
@@ -11,6 +12,7 @@ public class TemplateParametersConfiguration: IEntityTypeConfiguration<TemplateP
     public void Configure(EntityTypeBuilder<TemplateParameters> builder)
     {
         builder.ToTable(builder.GetTableName(),DatabaseConstants.SchemaName);
+        builder.ConfigureByConvention();
 
         builder.HasOne(x => x.Template)
             .WithMany(x => x.TemplatesParametersCollection)

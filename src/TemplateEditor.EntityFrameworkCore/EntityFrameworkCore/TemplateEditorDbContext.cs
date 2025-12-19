@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TemplateEditor.Entities.Lookups;
 using TemplateEditor.Entities.Templates;
+using TemplateEditor.Extensions;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
@@ -71,7 +72,9 @@ public class TemplateEditorDbContext :
     public DbSet<OpenIddictToken> Tokens { get; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.SetAbpTablePrefix();
         base.OnModelCreating(builder);
+        builder.ApplyConfigurationsFromAssembly(typeof(TemplateEditorDbContext).Assembly);
 
         builder.ConfigureTemplateEditor();
         builder.ConfigurePermissionManagement();
@@ -79,6 +82,7 @@ public class TemplateEditorDbContext :
         builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
+        
         builder.ToSnakeCase();
     }
 }
